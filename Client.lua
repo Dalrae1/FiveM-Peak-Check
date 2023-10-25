@@ -96,6 +96,10 @@ CreateThread(function()
     while true do
         Wait(config.Debug and 0 or config.CheckDelay)
         if not IsPlayerFreeAiming(PlayerId()) then
+            if overrideAimPosition then
+                overrideAimPosition = false
+                ResetHudComponentValues(14)
+            end
             goto continue
         end
         local ped = PlayerPedId()
